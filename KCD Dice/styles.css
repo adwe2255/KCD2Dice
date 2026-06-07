@@ -1,0 +1,322 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000000;
+  --panel-bg: #0d0d0d;
+  --header-bg: #474747;
+  --line: #242424;
+  --text: #f5f5f5;
+  --muted: #cfcfcf;
+  --orange: #f89a16;
+  --red: #ff1c12;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button,
+table {
+  font: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.app-shell {
+  padding: 14px 12px 24px;
+}
+
+.mode-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mode-button,
+.utility-button {
+  border: 1px solid #434343;
+  background: #141414;
+  color: #d8d8d8;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mode-button.is-active {
+  background: var(--orange);
+  color: #000000;
+}
+
+.utility-button-active,
+.face-button.is-active,
+.probability-mode-button.is-active {
+  background: var(--orange);
+  color: #000000;
+  border-color: var(--orange);
+}
+
+.screen {
+  display: none;
+}
+
+.screen.is-active {
+  display: block;
+}
+
+.two-column-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.section-header h1,
+.probability-panel h2 {
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.section-header h1 {
+  font-size: 30px;
+}
+
+.section-copy {
+  margin: -6px 0 12px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.probability-panel h2 {
+  font-size: 28px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.planner-toolbar {
+  align-items: flex-start;
+}
+
+.planner-controls,
+.face-button-row,
+.probability-mode-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.face-picker {
+  display: grid;
+  gap: 6px;
+}
+
+.face-button,
+.probability-mode-button {
+  border: 1px solid #434343;
+  background: #141414;
+  color: #d8d8d8;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.face-button {
+  width: 38px;
+  height: 38px;
+}
+
+.probability-mode-button {
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.status-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.table-panel {
+  overflow: hidden;
+  background: var(--panel-bg);
+  border-top: 1px solid #7d7d7d;
+}
+
+.all-dice-panel {
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+}
+
+.dice-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dice-table thead th {
+  padding: 12px 12px;
+  background: var(--header-bg);
+  color: #efefef;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.dice-table tbody td {
+  padding: 15px 12px;
+  border-bottom: 1px solid var(--line);
+  color: #f1f1f1;
+  font-size: 16px;
+}
+
+.dice-table tbody tr {
+  background: #111111;
+}
+
+.dice-table th:first-child,
+.dice-table td:first-child {
+  width: 64px;
+  padding-left: 20px;
+}
+
+.dice-table th:nth-child(2),
+.dice-table td:nth-child(2) {
+  min-width: 190px;
+}
+
+.add-button,
+.remove-button {
+  width: 40px;
+  height: 30px;
+  border: 0;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.add-button {
+  background: var(--orange);
+}
+
+.remove-button {
+  background: var(--red);
+}
+
+.count-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count-value,
+.slot-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #1f1f1f;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.result-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.probability-panel {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid #565656;
+}
+
+.probability-mode-row {
+  margin: 0 0 14px;
+}
+
+.probability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 18px 28px;
+}
+
+.probability-card {
+  --probability-accent: var(--red);
+  min-height: 84px;
+  padding: 10px 10px 8px;
+  border: 1px solid var(--probability-accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--probability-accent) 20%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--probability-accent) 12%, #111111) 0%,
+    #0d0d0d 100%
+  );
+  border-radius: 0 28px 0 0;
+}
+
+.probability-card-empty {
+  border-color: #383838;
+  box-shadow: none;
+  background: #111111;
+}
+
+.probability-label,
+.probability-value {
+  margin: 0;
+}
+
+.probability-label {
+  color: #b3b3b3;
+  font-size: 16px;
+}
+
+.probability-value {
+  margin-top: 6px;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.probability-value span {
+  color: #9d9d9d;
+  font-size: 0.7em;
+  margin-left: 3px;
+}
+
+.probability-empty-copy {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.empty-cell {
+  color: #bbbbbb;
+}
+
+@media (max-width: 1200px) {
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .all-dice-panel {
+    max-height: none;
+  }
+}

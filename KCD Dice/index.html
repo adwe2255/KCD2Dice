@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KCD2 Dice Helper</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <nav class="mode-switch" aria-label="Screen switch">
+        <button id="manual-mode-button" class="mode-button is-active" type="button">
+          Calculator
+        </button>
+        <button id="planner-mode-button" class="mode-button" type="button">
+          Inventory Planner
+        </button>
+      </nav>
+
+      <section id="manual-screen" class="screen is-active">
+        <section class="two-column-layout">
+          <section class="left-column">
+            <header class="section-header">
+              <h1>My Dice</h1>
+              <p class="section-copy">Select up to six dice and inspect the probabilities for that set.</p>
+            </header>
+
+            <div class="toolbar">
+              <p id="manual-selection-status" class="status-text"></p>
+              <button id="clear-manual-button" class="utility-button" type="button">
+                Clear
+              </button>
+            </div>
+
+            <section class="table-panel">
+              <table class="dice-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Die Name</th>
+                    <th>P%1</th>
+                    <th>P%2</th>
+                    <th>P%3</th>
+                    <th>P%4</th>
+                    <th>P%5</th>
+                    <th>P%6</th>
+                  </tr>
+                </thead>
+                <tbody id="my-dice-body"></tbody>
+              </table>
+            </section>
+
+            <section class="probability-panel">
+              <h2>Interesting Probabilities</h2>
+              <div class="probability-mode-row">
+                <button class="probability-mode-button is-active" data-probability-view="classic" type="button">
+                  Standard
+                </button>
+                <button class="probability-mode-button" data-probability-view="bust" type="button">
+                  Bust Chance
+                </button>
+                <button class="probability-mode-button" data-probability-view="scoring" type="button">
+                  1+ Scoring Die
+                </button>
+                <button class="probability-mode-button" data-probability-view="triples" type="button">
+                  Triples by Face
+                </button>
+              </div>
+              <div id="probability-cards" class="probability-grid"></div>
+            </section>
+          </section>
+
+          <section class="right-column">
+            <header class="section-header">
+              <h1>All Dice</h1>
+              <p class="section-copy">Add dice into the calculator from this list.</p>
+            </header>
+
+            <section class="table-panel all-dice-panel">
+              <table class="dice-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Die Name</th>
+                    <th>P%1</th>
+                    <th>P%2</th>
+                    <th>P%3</th>
+                    <th>P%4</th>
+                    <th>P%5</th>
+                    <th>P%6</th>
+                  </tr>
+                </thead>
+                <tbody id="all-dice-body"></tbody>
+              </table>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section id="planner-screen" class="screen">
+        <section class="two-column-layout">
+          <section class="left-column">
+            <header class="section-header">
+              <h1>Recommended Dice</h1>
+              <p class="section-copy">Best six-die set based on the inventory you enter.</p>
+            </header>
+
+            <div class="toolbar planner-toolbar">
+              <div class="planner-controls">
+                <button
+                  id="planner-overall-button"
+                  class="utility-button utility-button-active"
+                  type="button"
+                >
+                  Best Overall
+                </button>
+                <button
+                  id="planner-face-button"
+                  class="utility-button"
+                  type="button"
+                >
+                  Best Face
+                </button>
+              </div>
+              <div id="face-picker" class="face-picker" hidden>
+                <span class="status-text">Target</span>
+                <div class="face-button-row">
+                  <button class="face-button is-active" data-face="1" type="button">1</button>
+                  <button class="face-button" data-face="2" type="button">2</button>
+                  <button class="face-button" data-face="3" type="button">3</button>
+                  <button class="face-button" data-face="4" type="button">4</button>
+                  <button class="face-button" data-face="5" type="button">5</button>
+                  <button class="face-button" data-face="6" type="button">6</button>
+                </div>
+              </div>
+            </div>
+
+            <section class="table-panel">
+              <table class="dice-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Die Name</th>
+                    <th>P%1</th>
+                    <th>P%2</th>
+                    <th>P%3</th>
+                    <th>P%4</th>
+                    <th>P%5</th>
+                    <th>P%6</th>
+                  </tr>
+                </thead>
+                <tbody id="planner-dice-body"></tbody>
+              </table>
+            </section>
+
+            <p id="planner-result-note" class="result-note"></p>
+
+            <section class="probability-panel">
+              <h2>Interesting Probabilities</h2>
+              <div class="probability-mode-row">
+                <button class="probability-mode-button is-active" data-probability-view="classic" type="button">
+                  Standard
+                </button>
+                <button class="probability-mode-button" data-probability-view="bust" type="button">
+                  Bust Chance
+                </button>
+                <button class="probability-mode-button" data-probability-view="scoring" type="button">
+                  1+ Scoring Die
+                </button>
+                <button class="probability-mode-button" data-probability-view="triples" type="button">
+                  Triples by Face
+                </button>
+              </div>
+              <div id="planner-probability-cards" class="probability-grid"></div>
+            </section>
+          </section>
+
+          <section class="right-column">
+            <header class="section-header">
+              <h1>Inventory</h1>
+              <p class="section-copy">Set how many copies of each die you own.</p>
+            </header>
+
+            <div class="toolbar">
+              <p id="planner-selection-status" class="status-text"></p>
+              <button id="clear-inventory-button" class="utility-button" type="button">
+                Reset
+              </button>
+            </div>
+
+            <section class="table-panel all-dice-panel">
+              <table class="dice-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Die Name</th>
+                    <th>Count</th>
+                    <th>P%1</th>
+                    <th>P%2</th>
+                    <th>P%3</th>
+                    <th>P%4</th>
+                    <th>P%5</th>
+                    <th>P%6</th>
+                  </tr>
+                </thead>
+                <tbody id="inventory-dice-body"></tbody>
+              </table>
+            </section>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
