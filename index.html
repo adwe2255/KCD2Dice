@@ -8,9 +8,19 @@
   </head>
   <body>
     <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="app-eyebrow">Kingdom Come: Deliverance II</p>
+          <h1 class="app-title">Dice Helper</h1>
+          <p class="app-subtitle">
+            Build a six-die set, compare outcomes, and plan the best loadout from your inventory.
+          </p>
+        </div>
+      </header>
+
       <nav class="mode-switch" aria-label="Screen switch">
         <button id="manual-mode-button" class="mode-button is-active" type="button">
-          Calculator
+          Dice Calculator
         </button>
         <button id="planner-mode-button" class="mode-button" type="button">
           Inventory Planner
@@ -19,10 +29,10 @@
 
       <section id="manual-screen" class="screen is-active">
         <section class="two-column-layout">
-          <section class="left-column">
+          <section class="left-column content-panel">
             <header class="section-header">
               <h1>My Dice</h1>
-              <p class="section-copy">Select up to six dice and inspect the probabilities for that set.</p>
+              <p class="section-copy">Select up to six dice and see how that set is likely to perform.</p>
             </header>
 
             <div class="toolbar">
@@ -70,10 +80,10 @@
             </section>
           </section>
 
-          <section class="right-column">
+          <section class="right-column content-panel">
             <header class="section-header">
               <h1>All Dice</h1>
-              <p class="section-copy">Add dice into the calculator from this list.</p>
+              <p class="section-copy">Browse the full list and add dice into your current set.</p>
             </header>
 
             <section class="table-panel all-dice-panel">
@@ -99,10 +109,10 @@
 
       <section id="planner-screen" class="screen">
         <section class="two-column-layout">
-          <section class="left-column">
+          <section class="left-column content-panel">
             <header class="section-header">
               <h1>Recommended Dice</h1>
-              <p class="section-copy">Best six-die set based on the inventory you enter.</p>
+              <p class="section-copy">Your best six-die loadout based on the inventory entered below.</p>
             </header>
 
             <div class="toolbar planner-toolbar">
@@ -113,6 +123,13 @@
                   type="button"
                 >
                   Best Overall
+                </button>
+                <button
+                  id="planner-round-button"
+                  class="utility-button"
+                  type="button"
+                >
+                  Best Round
                 </button>
                 <button
                   id="planner-face-button"
@@ -135,28 +152,34 @@
               </div>
             </div>
 
-            <section class="table-panel">
-              <table class="dice-table">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Die Name</th>
-                    <th>P%1</th>
-                    <th>P%2</th>
-                    <th>P%3</th>
-                    <th>P%4</th>
-                    <th>P%5</th>
-                    <th>P%6</th>
-                  </tr>
-                </thead>
-                <tbody id="planner-dice-body"></tbody>
-              </table>
+            <section class="planner-loadout-panel">
+              <div id="planner-dice-summary" class="planner-dice-summary"></div>
+              <details class="planner-dice-details">
+                <summary class="planner-dice-toggle">Show individual die probabilities</summary>
+                <section class="table-panel">
+                  <table class="dice-table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Die Name</th>
+                        <th>P%1</th>
+                        <th>P%2</th>
+                        <th>P%3</th>
+                        <th>P%4</th>
+                        <th>P%5</th>
+                        <th>P%6</th>
+                      </tr>
+                    </thead>
+                    <tbody id="planner-dice-body"></tbody>
+                  </table>
+                </section>
+              </details>
             </section>
 
             <p id="planner-result-note" class="result-note"></p>
 
             <section class="probability-panel">
-              <h2>Interesting Probabilities</h2>
+              <h2>Loadout Outlook</h2>
               <div class="probability-mode-row">
                 <button class="probability-mode-button is-active" data-probability-view="classic" type="button">
                   Standard
@@ -175,10 +198,10 @@
             </section>
           </section>
 
-          <section class="right-column">
+          <section class="right-column content-panel">
             <header class="section-header">
               <h1>Inventory</h1>
-              <p class="section-copy">Set how many copies of each die you own.</p>
+              <p class="section-copy">Set how many copies of each die you own to generate a recommendation.</p>
             </header>
 
             <div class="toolbar">

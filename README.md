@@ -12,5 +12,6 @@ This app has two screens:
 
 1. Set how many copies of each die you own.
 2. Choose `Best Overall` to use the current overall calculation.
-3. Choose `Best Face` and pick `1-6` to optimize for one specific face.
-4. The recommended six-die set and probability cards update from that choice.
+3. Choose `Best Round` to favor dice that are easier to keep, keep the turn alive, and create hot-dice rerolls.
+4. Choose `Best Face` and pick `1-6` to optimize for one specific face.
+5. The recommended six-die set and probability cards update from that choice.
